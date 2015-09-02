@@ -1,0 +1,13 @@
+---
+- name: update apt cache
+  apt: update_cache=yes
+
+- name: install ntp service
+  apt: name=ntp state=present
+
+- name: ensure ntp service is running
+  service: name=ntp state=started enabled=yes
+
+- name: configure ntp
+  template: src=ntp.conf.j2 dest=/etc/ntp.conf
+  notify: restart ntp service

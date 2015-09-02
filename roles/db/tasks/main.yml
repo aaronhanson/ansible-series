@@ -1,0 +1,12 @@
+---
+- name: install mariadb
+  apt: name={{ item }} state=present
+  with_items:
+    - mariadb-server
+    - mariadb-client
+
+- name: install couchdb
+  apt: name=couchdb state=present
+
+- name: install mongodb
+  apt: name=mongodb state=present
